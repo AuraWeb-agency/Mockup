@@ -99,12 +99,28 @@
       grid-template-columns: 1.1fr 0.95fr;
       gap: 36px;
       align-items: center;
+      justify-items: stretch;
       padding: 36px 0 12px;
+    }
+    .hero-copy {
+      display: grid;
+      gap: 16px;
     }
     .hero-copy h1 {
       margin: 0;
       font-size: clamp(2.8rem, 4vw, 4.4rem);
       line-height: 1.02;
+    }
+    .hero-photo {
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #e2e8f0;
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      max-width: 560px;
+      min-height: 0;
+      margin: 0 auto;
     }
     .hero-copy p {
       margin: 24px 0;
@@ -320,14 +336,34 @@
     }
     .dot.active { background: #0f4c81; }
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
+      .hero { grid-template-columns: 1fr; justify-items: center; }
+      .hero-copy { text-align: center; }
       .hero-panel { order: -1; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .hero-photo { max-width: 100%; }
+      .hero-photo img { object-position: center; }
+      .hero-stats { flex-direction: column; align-items: stretch; }
+      .stat-card { min-width: auto; width: 100%; }
+      .section-header { flex-direction: column; align-items: flex-start; }
+      .rating-pill { width: auto; }
     }
     @media (max-width: 680px) {
-      .page { padding: 18px; }
-      .hero-copy h1 { font-size: 2.8rem; }
-      .hero-media { gap: 20px; }
+      .page { padding: 16px; }
+      .hero { gap: 24px; }
+      .hero-copy h1 { font-size: 2.3rem; }
+      .hero-copy p { margin: 20px 0; }
+      .hero-copy { width: 100%; }
       .hero-panel, .carousel { border-radius: 24px; }
+      .hero-photo { max-width: 100%; aspect-ratio: auto; min-height: 360px; }
+      .hero-photo img { height: auto; }
+      .hero-stats { gap: 14px; }
+      .stat-card { padding: 18px; }
+      .pricing-card { padding: 22px; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .section-header h2 { font-size: 1.6rem; }
+      .carousel-controls { padding: 0 10px; }
+      .slide { padding: 24px 20px; }
+      .page { padding: 14px; }
     }
   </style>
 </head>
