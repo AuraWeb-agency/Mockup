@@ -1,0 +1,20 @@
+<svg width="220" height="220" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comfort Zone HVAC logo">
+  <defs>
+    <linearGradient id="flameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="coolGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f4c81"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="220" height="220" rx="32" fill="#ffffff"/>
+  <path d="M110 25C110 25 75 68 75 110C75 151 104 183 110 190C116 183 145 151 145 110C145 68 110 25 110 25Z" fill="url(#flameGrad)"/>
+  <path d="M110 35C110 35 90 70 90 110C90 146 110 166 110 166C110 166 130 146 130 110C130 70 110 35 110 35Z" fill="#ffffff" opacity="0.9"/>
+  <path d="M65 95L110 50L155 95V150C155 157 148 164 141 164H79C72 164 65 157 65 150V95Z" fill="#ffffff" stroke="#0f4c81" stroke-width="10"/>
+  <path d="M78 110H142" stroke="#0f4c81" stroke-width="10" stroke-linecap="round"/>
+  <path d="M110 126V158" stroke="#0f4c81" stroke-width="10" stroke-linecap="round"/>
+  <path d="M99 138L110 127L121 138" stroke="#0f4c81" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M75 149L83 157M145 149L137 157" stroke="#60a5fa" stroke-width="10" stroke-linecap="round"/>
+</svg>

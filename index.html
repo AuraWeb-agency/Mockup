@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comfort Zone HVAC | Residential Heating and Air</title>
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --accent: #f9a825;
+      --bg: #f4f8ff;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #64748b;
+      --shadow: 0 18px 45px rgba(15, 76, 129, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #f8fbff 0%, #eef4fb 100%);
+    }
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo {
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid rgba(15, 76, 129, 0.14);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .logo svg,
+    .logo img {
+      width: auto;
+      height: 42px;
+      display: block;
+      object-fit: contain;
+      border: none;
+      outline: none;
+    }
+    .brand-text {
+      line-height: 1.1;
+    }
+    .brand-text strong { display: block; font-size: 1.05rem; }
+    .tagline { color: var(--muted); font-size: 0.95rem; }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff4d1;
+      color: #1f2937;
+      border: 1px solid rgba(249, 168, 37, 0.25);
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 10px 20px rgba(15, 76, 129, 0.08);
+    }
+    .cta-button:hover {
+      background: #fff8df;
+    }
+    .hero-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff8df;
+      color: #1f2937;
+      border: 1px solid rgba(249, 168, 37, 0.25);
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 10px 20px rgba(15, 76, 129, 0.08);
+    }
+    .hero-call:hover {
+      background: #fffbe7;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.95fr;
+      gap: 36px;
+      align-items: center;
+      padding: 36px 0 12px;
+    }
+    .hero-copy h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 4vw, 4.4rem);
+      line-height: 1.02;
+    }
+    .hero-copy p {
+      margin: 24px 0;
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .stat-card {
+      border-radius: 24px;
+      background: white;
+      padding: 22px;
+      min-width: 220px;
+      box-shadow: var(--shadow);
+    }
+    .stat-card strong {
+      display: block;
+      font-size: 1.9rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .stat-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .hero-media {
+      display: grid;
+      gap: 16px;
+    }
+    .hero-photo {
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #e2e8f0;
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      max-width: 560px;
+      min-height: 0;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border: none;
+    }
+    .hero-panel {
+      border-radius: 32px;
+      padding: 30px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+    .hero-panel h2 { margin: 0 0 16px; font-size: 1.3rem; }
+    .hero-panel p { margin: 0; color: var(--muted); line-height: 1.75; }
+    .pricing-section {
+      margin-top: 48px;
+      padding-bottom: 16px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .pricing-card {
+      border-radius: 28px;
+      background: white;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 16px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      border: 1px solid rgba(15, 76, 129, 0.06);
+    }
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 48px rgba(15, 76, 129, 0.16);
+      border-color: rgba(15, 76, 129, 0.15);
+    }
+    .pricing-card h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+    .pricing-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .price-tag {
+      margin-top: 10px;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .reviews-section {
+      margin-top: 48px;
+      padding: 42px 0 18px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    .section-header h2 { margin: 0; font-size: 2rem; }
+    .rating-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: #dbf2ff;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 32px;
+      background: #ffffff;
+      box-shadow: var(--shadow);
+    }
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.45s ease;
+      width: 500%;
+    }
+    .slide {
+      width: 100%;
+      flex-shrink: 0;
+      padding: 32px 28px;
+    }
+    .review-card {
+      display: grid;
+      gap: 20px;
+    }
+    .review-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0f4c81, #2d6caa);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .review-meta {
+      display: grid;
+      gap: 4px;
+    }
+    .name { font-size: 1.05rem; font-weight: 700; }
+    .review-badge { color: var(--muted); font-size: 0.95rem; }
+    .stars { display: flex; gap: 4px; color: #f59e0b; }
+    .quote {
+      margin: 0;
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+    .quote strong { color: var(--primary); }
+    .carousel-controls {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+    }
+    .control {
+      pointer-events: all;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(15, 76, 129, 0.12);
+      color: var(--primary);
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+      display: grid;
+      place-items: center;
+    }
+    .control:hover { transform: scale(1.05); background: rgba(15, 76, 129, 0.18); }
+    .nav-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      border: 1px solid #dbeafe;
+      cursor: pointer;
+    }
+    .dot.active { background: #0f4c81; }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-panel { order: -1; }
+    }
+    @media (max-width: 680px) {
+      .page { padding: 18px; }
+      .hero-copy h1 { font-size: 2.8rem; }
+      .hero-media { gap: 20px; }
+      .hero-panel, .carousel { border-radius: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="tagline">Friendly, fast HVAC service with expert installs, repairs, and maintenance.</p>
+        <h1>Keep your home comfortable all year with Comfort Zone HVAC.</h1>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <strong>5.0</strong>
+            <div class="stars">★★★★★</div>
+            <p>Google rating</p>
+          </div>
+          <div class="stat-card">
+            <strong>111</strong>
+            <p>Verified reviews</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="Screenshot 2026-06-04 151823.png" alt="HVAC service photo" />
+      </div>
+    </section>
+
+    <section class="pricing-section">
+      <div class="section-header">
+        <h2>Popular pricing options</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Furnace tune-up</h3>
+          <p>Routine heating maintenance to keep your system running efficiently through the cold months.</p>
+          <div class="price-tag">$129</div>
+        </div>
+        <div class="pricing-card">
+          <h3>AC repair</h3>
+          <p>Fast diagnostics and repairs for cooling issues, refrigerant leaks, and system performance.</p>
+          <div class="price-tag">$179</div>
+        </div>
+        <div class="pricing-card">
+          <h3>New system install</h3>
+          <p>Professional heating or cooling installation with cleanup included and expert setup.</p>
+          <div class="price-tag">$2,299</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews-section">
+      <div class="section-header">
+        <h2>What customers are saying</h2>
+        <span class="rating-pill">5 stars • 111 reviews</span>
+      </div>
+      <div class="carousel" aria-label="Customer review carousel">
+        <div class="carousel-inner" id="carouselInner">
+          <div class="slide">
+            <div class="review-card">
+              <div class="review-head">
+                <div class="avatar">CJ</div>
+                <div class="review-meta">
+                  <span class="name">Candice Johnson</span>
+                </div>
+              </div>
+              <div class="stars" aria-label="5 star rating">★★★★★</div>
+              <p class="quote">If I could give them 20 stars, I would! Tyler was awesome, super professional, friendly, and really went out of his way to make sure everything was done right when installing our new furnace and water heater. He was quick to respond to all questions and the work was excellent.</p>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="review-card">
+              <div class="review-head">
+                <div class="avatar">KW</div>
+                <div class="review-meta">
+                  <span class="name">Kevin Weimer</span>
+                </div>
+              </div>
+              <div class="stars">★★★★★</div>
+              <p class="quote">Tyler and his crew replaced the furnace very quickly and even fixed some venting for the hot water heater. Reasonable prices and excellent work. I would highly recommend them.</p>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="review-card">
+              <div class="review-head">
+                <div class="avatar">HW</div>
+                <div class="review-meta">
+                  <span class="name">Heather Ward</span>
+                </div>
+              </div>
+              <div class="stars">★★★★★</div>
+              <p class="quote">Comfort Zone HVAC was great! They were able to diagnose the problem, order the part, get it in, and put it in in three days. They were very affordable, and didn't try to upsell me. Highly recommend.</p>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="review-card">
+              <div class="review-head">
+                <div class="avatar">MH</div>
+                <div class="review-meta">
+                  <span class="name">Mayra Herrera</span>
+                </div>
+              </div>
+              <div class="stars">★★★★★</div>
+              <p class="quote">Tyler was absolutely amazing! He was so friendly, kind, and patient while helping me with my furnace. He took the time to answer all of my questions and even taught me a lot about how my furnace works. I really appreciate his professionalism and the care he showed during the visit.</p>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="review-card">
+              <div class="review-head">
+                <div class="avatar">AN</div>
+                <div class="review-meta">
+                  <span class="name">Angela Nechvatal</span>
+                </div>
+              </div>
+              <div class="stars">★★★★★</div>
+              <p class="quote">Tyler & his team are the best. They are kind, do a great job, and clean up when the job is finished. I highly recommend using Comfort Zone HVAC!</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="control" id="prevBtn" aria-label="Previous review">‹</button>
+          <button class="control" id="nextBtn" aria-label="Next review">›</button>
+        </div>
+      </div>
+      <div class="nav-dots" id="navDots"></div>
+    </section>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const carouselInner = document.getElementById('carouselInner');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const navDots = document.getElementById('navDots');
+    let currentIndex = 0;
+
+    function updateCarousel(index) {
+      currentIndex = (index + slides.length) % slides.length;
+      carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+      document.querySelectorAll('.dot').forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentIndex);
+      });
+    }
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot';
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Show review ${index + 1}`);
+      dot.addEventListener('click', () => updateCarousel(index));
+      navDots.appendChild(dot);
+    });
+
+    prevBtn.addEventListener('click', () => updateCarousel(currentIndex - 1));
+    nextBtn.addEventListener('click', () => updateCarousel(currentIndex + 1));
+
+    updateCarousel(0);
+    let autoSlide = setInterval(() => updateCarousel(currentIndex + 1), 5000);
+  </script>
+</body>
+</html>
